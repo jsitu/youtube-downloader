@@ -1,15 +1,51 @@
 import { NextRequest, NextResponse } from 'next/server';
 import ytdl from '@distube/ytdl-core';
 import ffmpeg from 'fluent-ffmpeg';
-import ffmpegStatic from 'ffmpeg-static';
 import { Readable } from 'stream';
 import { getVideoInfo, isValidYouTubeUrl, sanitizeFilename } from '@/lib/youtube';
 import { MAX_VIDEO_DURATION, AUDIO_BITRATE } from '@/lib/constants';
+import * as fs from 'fs';
 
-// Set ffmpeg path for Vercel deployment
-if (ffmpegStatic) {
-  ffmpeg.setFfmpegPath(ffmpegStatic);
+// Set ffmpeg path - handle both local and Vercel environments
+function setFfmpegPath() {
+  // Try multiple potential paths
+  const potentialPaths = [
+    '/opt/homebrew/bin/ffmpeg', // macOS with Homebrew
+    '/usr/local/bin/ffmpeg',     // Common Linux/macOS path
+    '/usr/bin/ffmpeg',            // Linux system path
+  ];
+
+  // Check if running in Vercel/production
+  if (process.env.VERCEL || process.env.NODE_ENV === 'production') {
+    try {
+      // In production, use the ffmpeg-static package
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const ffmpegStatic = require('ffmpeg-static');
+      if (ffmpegStatic) {
+        console.log('Using ffmpeg-static:', ffmpegStatic);
+        ffmpeg.setFfmpegPath(ffmpegStatic);
+        return;
+      }
+    } catch (error) {
+      console.error('ffmpeg-static not available:', error);
+    }
+  }
+
+  // For local development, try to find system ffmpeg
+  for (const ffmpegPath of potentialPaths) {
+    if (fs.existsSync(ffmpegPath)) {
+      console.log('Using system ffmpeg:', ffmpegPath);
+      ffmpeg.setFfmpegPath(ffmpegPath);
+      return;
+    }
+  }
+
+  // Fallback to PATH
+  console.log('Using ffmpeg from PATH');
+  ffmpeg.setFfmpegPath('ffmpeg');
 }
+
+setFfmpegPath();
 
 export async function POST(request: NextRequest) {
   try {
