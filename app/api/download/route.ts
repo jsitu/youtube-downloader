@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
     const readableStream = Readable.from(audioStream);
     
     // Process with ffmpeg
-    return new Promise((resolve) => {
+    return new Promise<NextResponse>((resolve) => {
       const chunks: Buffer[] = [];
       
       ffmpeg(readableStream)
@@ -98,7 +98,7 @@ export async function GET(request: NextRequest) {
   try {
     const videoInfo = await getVideoInfo(url);
     return NextResponse.json(videoInfo);
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Failed to fetch video information' },
       { status: 500 }

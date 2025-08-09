@@ -22,7 +22,7 @@ export async function getVideoInfo(url: string): Promise<VideoInfo> {
       author: info.videoDetails.author.name,
       videoId: info.videoDetails.videoId,
     };
-  } catch (error) {
+  } catch {
     throw new Error('Failed to fetch video information');
   }
 }

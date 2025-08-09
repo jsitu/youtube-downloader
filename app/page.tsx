@@ -9,11 +9,11 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Info } from 'lucide-react';
 
 export default function Home() {
-  const [videoInfo, setVideoInfo] = useState<any>(null);
+  const [videoInfo, setVideoInfo] = useState<{ title: string; duration: number; thumbnail: string; author: string; videoId: string } | null>(null);
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloadProgress, setDownloadProgress] = useState(0);
 
-  const handleVideoInfoFetch = (info: any) => {
+  const handleVideoInfoFetch = (info: { title: string; duration: number; thumbnail: string; author: string; videoId: string } | null) => {
     setVideoInfo(info);
   };
 
