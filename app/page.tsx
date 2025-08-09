@@ -82,8 +82,16 @@ export default function Home() {
             <Alert>
               <Info className="h-4 w-4" />
               <AlertDescription>
-                Maximum video duration: 30 minutes. Only for personal use.
-                Please respect copyright laws.
+                <div className="space-y-2">
+                  <p>Maximum video duration: 30 minutes. Only for personal use.</p>
+                  <p>Please respect copyright laws.</p>
+                  {process.env.NEXT_PUBLIC_VERCEL && (
+                    <p className="text-yellow-600 dark:text-yellow-400 font-medium">
+                      Note: This app may not work on cloud platforms due to YouTube&apos;s bot detection. 
+                      For best results, run locally.
+                    </p>
+                  )}
+                </div>
               </AlertDescription>
             </Alert>
           </CardContent>

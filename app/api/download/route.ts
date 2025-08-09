@@ -112,8 +112,12 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error('Download error:', error);
+    
+    // Return the specific error message if available
+    const errorMessage = error instanceof Error ? error.message : 'Failed to download video';
+    
     return NextResponse.json(
-      { error: 'Failed to download video' },
+      { error: errorMessage },
       { status: 500 }
     );
   }
@@ -136,8 +140,12 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(videoInfo);
   } catch (error) {
     console.error('GET /api/download error:', error);
+    
+    // Return the specific error message if available
+    const errorMessage = error instanceof Error ? error.message : 'Failed to fetch video information';
+    
     return NextResponse.json(
-      { error: 'Failed to fetch video information' },
+      { error: errorMessage },
       { status: 500 }
     );
   }

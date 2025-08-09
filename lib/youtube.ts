@@ -26,7 +26,17 @@ export async function getVideoInfo(url: string): Promise<VideoInfo> {
     };
   } catch (error) {
     console.error('ytdl.getInfo error:', error);
-    throw new Error('Failed to fetch video information');
+    
+    const err = error as Error & { statusCode?: number };
+    
+    // Check for bot detection error
+    if (err.message?.includes('Sign in to confirm') || 
+        err.message?.includes('bot') ||
+        err.statusCode === 429) {
+      throw new Error('YouTube has detected this as an automated request. This typically happens on cloud hosting platforms. Please try running this application locally or use a VPN.');
+    }
+    
+    throw new Error('Failed to fetch video information. Please check the URL and try again.');
   }
 }
 
