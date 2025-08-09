@@ -1,19 +1,39 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { DownloadForm } from '@/components/download-form';
-import { VideoPreview } from '@/components/video-preview';
-import { DownloadProgress } from '@/components/download-progress';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Info } from 'lucide-react';
+import { useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { DownloadForm } from "@/components/download-form";
+import { VideoPreview } from "@/components/video-preview";
+import { DownloadProgress } from "@/components/download-progress";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Info } from "lucide-react";
 
 export default function Home() {
-  const [videoInfo, setVideoInfo] = useState<{ title: string; duration: number; thumbnail: string; author: string; videoId: string } | null>(null);
+  const [videoInfo, setVideoInfo] = useState<{
+    title: string;
+    duration: number;
+    thumbnail: string;
+    author: string;
+    videoId: string;
+  } | null>(null);
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloadProgress, setDownloadProgress] = useState(0);
 
-  const handleVideoInfoFetch = (info: { title: string; duration: number; thumbnail: string; author: string; videoId: string } | null) => {
+  const handleVideoInfoFetch = (
+    info: {
+      title: string;
+      duration: number;
+      thumbnail: string;
+      author: string;
+      videoId: string;
+    } | null
+  ) => {
     setVideoInfo(info);
   };
 
@@ -52,12 +72,10 @@ export default function Home() {
               onDownloadComplete={handleDownloadComplete}
             />
 
-            {videoInfo && (
-              <VideoPreview videoInfo={videoInfo} />
-            )}
+            {videoInfo && <VideoPreview videoInfo={videoInfo} />}
 
-            <DownloadProgress 
-              isDownloading={isDownloading} 
+            <DownloadProgress
+              isDownloading={isDownloading}
               progress={downloadProgress}
             />
 
@@ -70,10 +88,6 @@ export default function Home() {
             </Alert>
           </CardContent>
         </Card>
-
-        <footer className="text-center text-sm text-muted-foreground">
-          <p>Built with Next.js and shadcn/ui</p>
-        </footer>
       </div>
     </div>
   );

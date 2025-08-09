@@ -3,7 +3,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Clock, User } from 'lucide-react';
-import { formatDuration } from '@/lib/youtube';
+import { formatDuration } from '@/lib/youtube-utils';
 import Image from 'next/image';
 
 interface VideoPreviewProps {

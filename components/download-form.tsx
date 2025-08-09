@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Download, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
-import { isValidYouTubeUrl } from '@/lib/youtube';
+import { isValidYouTubeUrl } from '@/lib/youtube-utils';
 
 interface VideoInfo {
   title: string;
