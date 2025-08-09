@@ -2,6 +2,12 @@
 
 A Next.js application for converting YouTube videos to MP3 audio files.
 
+## 📚 Documentation
+
+- **[Quick Start Guide](QUICK_START.md)** - Get running in 5 minutes
+- **[User Guide](USER_GUIDE.md)** - Detailed setup instructions for non-technical users
+- **[Technical Documentation](#technology-stack)** - For developers
+
 ## ⚠️ Important Notice
 
 **This application may not work on cloud platforms (Vercel, Netlify, etc.) due to YouTube's bot detection mechanisms.** YouTube blocks requests from data center IP addresses to prevent automated scraping. 
