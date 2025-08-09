@@ -17,7 +17,7 @@ This guide will help you run the YouTube to MP3 converter on your own computer. 
 Before starting, make sure you have:
 - ✅ A computer (Mac or Windows)
 - ✅ Internet connection
-- ✅ About 15 minutes for setup
+- ✅ About 10 minutes for setup
 - ✅ Basic ability to copy/paste text
 
 ---
@@ -52,19 +52,22 @@ Press Enter and wait for completion.
 
 ### Step 3: Download the App
 
-1. In Terminal, navigate to your Desktop:
-```bash
-cd ~/Desktop
-```
+1. **Download the app files:**
+   - Go to: https://github.com/jsitu/youtube-downloader
+   - Click the green **"Code"** button
+   - Click **"Download ZIP"**
+   - The file will download to your Downloads folder
 
-2. Download the app:
-```bash
-git clone https://github.com/jsitu/youtube-downloader.git
-```
+2. **Extract and move the app:**
+   - Open your Downloads folder
+   - Find the file `youtube-downloader-main.zip`
+   - Double-click to extract it
+   - Drag the extracted `youtube-downloader-main` folder to your Desktop
+   - Rename it to just `youtube-downloader` (remove the "-main" part)
 
-3. Enter the app folder:
+3. **Open Terminal and navigate to the app:**
 ```bash
-cd youtube-downloader
+cd ~/Desktop/youtube-downloader
 ```
 
 ### Step 4: Install App Dependencies
@@ -108,16 +111,7 @@ You should see:
 6. Click "Install"
 7. Click "Finish" when done
 
-### Step 2: Install Git
-
-1. Go to https://git-scm.com/download/win
-2. Download will start automatically
-3. Open the downloaded file
-4. Click "Next" through the installer (use default settings)
-5. Click "Install"
-6. Click "Finish" when done
-
-### Step 3: Install FFmpeg
+### Step 2: Install FFmpeg
 
 1. Go to https://www.gyan.dev/ffmpeg/builds/
 2. Under "Release builds", click **"full" link** next to "release"
@@ -132,25 +126,31 @@ You should see:
    - Click "New" and add: `C:\ffmpeg\bin`
    - Click "OK" on all windows
 
-### Step 4: Download the App
+### Step 3: Download the App
 
-1. Open **Command Prompt** (search for "cmd" in Start menu)
-2. Navigate to your Desktop:
+1. **Download the app files:**
+   - Go to: https://github.com/jsitu/youtube-downloader
+   - Click the green **"Code"** button
+   - Click **"Download ZIP"**
+   - The file will download to your Downloads folder
+
+2. **Extract and move the app:**
+   - Open your Downloads folder
+   - Find the file `youtube-downloader-main.zip`
+   - Right-click and select **"Extract All..."**
+   - Choose Desktop as the destination
+   - Click **"Extract"**
+   - Go to your Desktop
+   - Rename the folder from `youtube-downloader-main` to just `youtube-downloader`
+
+3. **Open Command Prompt and navigate to the app:**
+   - Search for "cmd" in the Start menu and open Command Prompt
+   - Type this command and press Enter:
 ```cmd
-cd Desktop
+cd Desktop\youtube-downloader
 ```
 
-3. Download the app:
-```cmd
-git clone https://github.com/jsitu/youtube-downloader.git
-```
-
-4. Enter the app folder:
-```cmd
-cd youtube-downloader
-```
-
-### Step 5: Install App Dependencies
+### Step 4: Install App Dependencies
 
 Run this command:
 ```cmd
@@ -158,7 +158,7 @@ npm install
 ```
 Wait for it to complete (usually 1-2 minutes).
 
-### Step 6: Start the App
+### Step 5: Start the App
 
 Run this command:
 ```cmd
@@ -171,7 +171,7 @@ You should see:
 ➜ Local: http://localhost:3000
 ```
 
-### Step 7: Open the App
+### Step 6: Open the App
 
 1. Open your web browser (Chrome, Edge, Firefox, etc.)
 2. Go to: **http://localhost:3000**
